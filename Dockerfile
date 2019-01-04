@@ -7,18 +7,18 @@
 # Codenvy, S.A. - initial API and implementation
 
 FROM eclipse/stack-base:ubuntu
-ENV OMISHARP_CLIENT_VERSION=7.1.3
+ENV OMISHARP_CLIENT_VERSION=7.2.3
 ENV CSHARP_LS_DIR=$HOME/che/ls-csharp
 RUN sudo apt-get update && sudo apt-get install apt-transport-https -y && \
     curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > ~/microsoft.gpg && \
     sudo mv ~/microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg && \
     sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-xenial-prod xenial main" > /etc/apt/sources.list.d/dotnetdev.list' && \
-    wget -qO- https://deb.nodesource.com/setup_7.x | sudo -E bash - && \
+    wget -qO- https://deb.nodesource.com/setup_10.x | sudo -E bash - && \
     sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF && \
     echo "deb http://download.mono-project.com/repo/ubuntu beta-xenial main" | sudo tee /etc/apt/sources.list.d/mono-official-beta.list && \
     sudo apt-get update && \
     sudo apt-get install -y \
-    dotnet-sdk-2.1.4 \
+    dotnet-sdk-2.2 \
     mono-devel \
     nodejs && \
     sudo apt-get -y clean && \
